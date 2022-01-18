@@ -1,0 +1,86 @@
+
+#chat{
+    grid-template-columns: var(--width-view) var(--width-users);
+    grid-template-rows: 60px auto 60px;
+    grid-template-areas:
+    'menu1   menu1'
+    'view    users'
+    'write   write';
+}
+
+#chat > *{
+    margin: 5px 0px;
+}
+
+/* --- control display --- */
+
+#chat-users{
+    display: var(--display-users);
+}
+
+#chat-view{
+    display: var(--display-view);
+}
+
+/* --- users --- */
+
+#chat-users{
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- menu --- */
+
+#chat-menu{
+    display:flex;
+    justify-content: center;
+
+    padding: 5px;
+
+    border-bottom: 4px solid;
+    border-color: var(--cor7);
+}
+
+.chat-menu{
+    margin: 5px;
+    width: 100%;
+}
+
+.chat-menu p{
+    position:relative;
+    top:-30px;
+
+    text-align: center;
+
+    width: 100%;
+
+    z-index: 10;
+    color: var(--cor2);
+
+    transition: color 1s ease;
+}
+
+.chat-menu input[name="chat-menu"]{
+    position:relative;
+    z-index: 20;
+
+    left: 0%;
+
+    width: 100%;
+    height: 100%;
+
+    border-bottom: 2px solid;
+    border-color: var(--cor2);
+
+    transition: width 1s ease, border 1s ease, left 1s ease;
+}
+
+.chat-menu input[name="chat-menu"]:checked{
+   left: 25%;
+   width:50%;
+   border-color: var(--cor5);
+}
+
+.chat-menu input[name="chat-menu"]:checked + p{
+    color: var(--cor5);
+}

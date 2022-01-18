@@ -1,0 +1,35 @@
+#chat{
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 60px;
+    grid-template-areas:
+    'view   users'
+    'write  write';
+}
+
+#chat > *{
+    margin: 5px;
+}
+
+/* --- users --- */
+
+#chat-users{
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 0px;
+    margin-right: 0px;
+
+    padding: 10px;
+
+    border-style: solid;
+    border-width: 0px 0px 10px 10px;
+    border-radius: 0px 0px 0px 30px;
+
+    border-color: var(--cor7);
+}
+
+/* --- menu --- */
+
+#chat-menu{
+    display:none
+}

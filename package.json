@@ -1,0 +1,31 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "private": true,
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "chat",
+      "version": "1.0.0",
+      "license": "ISC"
+    }
+  },
+  "scripts": {
+    "start": "clear && node ./bin/www",
+    "term": "clear && node ./test/term.js"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.7.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "sequelize": "^7.0.0-alpha.2",
+    "socket.io": "^4.4.0",
+    "socket.io-client": "^4.4.0",
+    "sqlite3": "^4.2.0"
+  }
+}

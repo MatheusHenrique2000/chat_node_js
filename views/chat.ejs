@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/default.css">
+    
+    <link rel="stylesheet" href="/stylesheets/chat/chat.css">
+    <link rel="stylesheet" media = "screen and (min-width: 768px)" href="/stylesheets/chat/chat-1024x768.css">
+    <link rel="stylesheet" media = "screen and (max-width: 768px)" href="/stylesheets/chat/chat-768x1024.css">
+
+</head>
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/resourses/build.js"></script>
+    <script src="/javascripts/resourses/dom.js"></script>
+    <script src="/javascripts/resourses/tools.js"></script>
+    <script src="/javascripts/chat/conf-chat.js"></script>
+    <script src="/javascripts/chat/serve-chat.js"></script>
+
+    <script>
+        const {afterLoad} = tools;
+
+        function changeDisplay (key){
+            var value;
+            key == 'view' && (value =
+// ╔═══════════════════════════╗
+`*{
+        --width-view:100%;
+        --width-users:0%;
+        --display-view: block;
+        --display-users: none;
+    }`
+//╚═══════════════════════════╝
+            );
+            key == 'users' && (value =
+// ╔═══════════════════════════╗
+`*{
+        --width-view:0%;
+        --width-users:100%;
+        --display-view: none;
+        --display-users: flex;
+    }`
+// ╚═══════════════════════════╝
+            );
+            dom('#menu-vars').innerText = value;
+        }
+
+        $$('name','<%= name %>');
+        afterLoad(function(){
+            $$('emit')('user enter','<%= name %>');
+        });
+
+        function sendMsg(){
+            var msg = dom('#chat-write textarea[0]');
+
+            $$('emit')('send msg', msg.value)
+
+            msg.value = '';
+
+        };
+
+        function keyMsg(event){
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                sendMsg();
+            };
+        };
+
+    </script>
+        
+    <style id='menu-vars'>
+        *{
+        --width-view:100%;
+        --width-users:0%;
+        --display-view: block;
+        --display-users: none;
+        }
+    </style>
+
+    <div id="chat">
+        <div id="chat-menu">
+            <div class="chat-menu"><input type="radio" name="chat-menu" onclick="changeDisplay('view')" checked><p>Mensagens</p></div>
+            <div class="chat-menu"><input type="radio" name="chat-menu" onclick="changeDisplay('users')"><p>Usuários</p></div>
+        </div>
+        <div id="chat-view">
+        </div>
+        <div id="chat-users">
+            <div>
+                <p>todos</p>
+            </div>
+        </div>
+        <div id="chat-write">
+            <textarea onkeypress="keyMsg(event)"></textarea>
+            <button class="ok2" onclick="sendMsg();" ><p>Enviar</p></button>
+        </div>
+    </div>
+
+</body>
+</html>
