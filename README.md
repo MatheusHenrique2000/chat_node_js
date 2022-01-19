@@ -24,3 +24,11 @@ Este é um treino pessoal para criação de um chat em tempo real.
 * Framework Express para a configurações basicas do servidor
 * Ejs para a renderização das views
 * Socket.io como protocólo para que a relação cliente-servidor, durante o chat, aconteça em realtime.
+
+---
+
+## Objetivos a cumprir
+
+- [ ] Reconstruir chat visando os frameworks mais populares (Vue, Angular, React)
+- [ ] Criar um log das mensagens
+- [ ] Fazer um login mais seguro
